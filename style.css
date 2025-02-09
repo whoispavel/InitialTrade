@@ -1,0 +1,186 @@
+/* Загальні стилі */
+body {
+    background: url('background.jpg') no-repeat center center/cover;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: #d5ff40;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Затемнення фону */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 0;
+}
+
+/* Контейнер */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+/* Купюра 💵 */
+.emoji-bill {
+    position: absolute;
+    top: -12%; /* Починає за межами екрану */
+    left: 50%;
+    transform: translateX(-50%) rotate(0deg);
+    font-size: 25px;
+    opacity: 0.8;
+    animation: drop-bill 3s ease-in forwards;
+}
+
+/* Анімація падіння купюри 💵 */
+@keyframes drop-bill {
+    0% {
+        top: -35%;
+        transform: translateX(-50%) rotate(15deg);
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        top: 25%; /* Місце, де знаходиться мішок 💰 */
+        transform: translateX(-50%) rotate(95deg);
+        opacity: 1;
+    }
+}
+
+/* Емодзі грошей */
+.emoji-money {
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 78px;
+    animation: float 1.5s infinite alternate ease-in-out;
+}
+
+/* Анімація підстрибування емодзі 💰 */
+@keyframes float {
+    0% {
+        transform: translateX(-50%) translateY(0);
+    }
+    100% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+}
+
+/* Стилі для заголовка */
+h1 {
+    font-size: 42px;
+    font-weight: bold;
+    text-shadow: 0px 0px 20px rgba(0, 0, 0, 1);
+    margin-bottom: 10px;
+    margin-top: -40px;
+}
+
+/* Анімація друку підзаголовка */
+.typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    font-size: 22px;
+    width: 0;
+    border-right: 3px solid #d5ff40;
+    animation: typing 3s steps(34, end) forwards, blink 0.7s infinite;
+    margin-top: 5px;
+    padding-right: 50px; /* Курсор зсунувся */
+}
+
+/* Анімація набору тексту */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 320px; }
+}
+
+/* Анімація миготіння курсора */
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+/* Кнопка */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    background-color: #d5ff40;
+    text-decoration: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.8);
+    transition: 0.3s ease-in-out;
+    animation: pulse 2s infinite ease-in-out;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+}
+
+/* Анімація динамічного бліку на кнопці */
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0) 70%);
+    background-size: 200% 100%;
+    animation: shine 1.25s infinite linear;
+}
+
+/* Анімація привернення уваги до кнопки */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.8);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0px 0px 40px rgba(0, 0, 0, 1);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.8);
+    }
+}
+
+.btn:hover {
+    box-shadow: 0px 0px 40px rgba(0, 0, 0, 1);
+    animation: none;
+}
+
+/* Футерний текст */
+.footer-text {
+    font-size: 14px;
+    margin-top: 20px;
+    text-shadow: 0px 0px 20px rgba(0, 0, 0, 1);
+}
